@@ -1,18 +1,22 @@
 .likeButton {
-	display: inline-block;
-
-	box-sizing: border-box;
-
 	cursor: pointer;
-	border: none;
 
 	padding: 0;
 	background: none;
+	border: 1px solid #303030;
+	border-radius: 40px;
+	width: 48px;
+	height: 48px;
 
 	transition: all 0.2s;
 }
 
+.likeButton:hover,
+.likeButton:active {
+	background: #303030;
+}
+
 .likeButton:hover svg,
 .likeButton:active svg {
-	stroke: #1473e6;
+	stroke: #ffffff;
 }
