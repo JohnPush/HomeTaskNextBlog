@@ -3,7 +3,6 @@ import { Open_Sans } from 'next/font/google';
 import './globals.css';
 import styles from './page.module.css';
 import Github from '../public/Github.svg';
-import { LikeButton } from '../components';
 
 const openSans = Open_Sans({ subsets: ['latin', 'cyrillic'] });
 
@@ -22,7 +21,6 @@ export default function RootLayout({
 			<body className={openSans.className}>
 				<div className={styles.header}>
 					.my_blog
-					<LikeButton />
 					<a href="https://github.com" target="_blank">
 						<Github />
 					</a>
