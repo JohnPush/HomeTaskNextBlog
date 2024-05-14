@@ -3,6 +3,7 @@ import { Open_Sans } from 'next/font/google';
 import './globals.css';
 import styles from './page.module.css';
 import Github from '../public/Github.svg';
+import Link from 'next/link';
 
 const openSans = Open_Sans({ subsets: ['latin', 'cyrillic'] });
 
@@ -20,10 +21,12 @@ export default function RootLayout({
 		<html lang="ru">
 			<body className={openSans.className}>
 				<div className={styles.header}>
-					.my_blog
-					<a href="https://github.com" target="_blank">
+					<Link className={styles.logo} href={'/'}>
+						.my_blog
+					</Link>
+					<Link href="https://github.com" target="_blank">
 						<Github />
-					</a>
+					</Link>
 				</div>
 				{children}
 			</body>

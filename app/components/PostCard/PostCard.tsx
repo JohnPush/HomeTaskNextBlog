@@ -3,6 +3,7 @@ import styles from './PostCard.module.css';
 import { LikeCount } from '../LikeCount/LikeCount';
 import Image from 'next/image';
 import Arrow from './Arrow.svg';
+import Link from 'next/link';
 
 export const PostCard = ({
 	title,
@@ -26,12 +27,14 @@ export const PostCard = ({
 			</div>
 			<div className={styles.bottom}>
 				<div className={styles.readingTime}>3 минуты</div>
-				<button className={styles.button}>
-					Читать
-					<span className={styles.arrow}>
-						<Arrow />
-					</span>
-				</button>
+				<Link className={styles.link} href={'/post'}>
+					<button className={styles.button}>
+						Читать
+						<span className={styles.arrow}>
+							<Arrow />
+						</span>
+					</button>
+				</Link>
 			</div>
 		</div>
 	);

@@ -9,6 +9,13 @@
 	margin: 15px 45px;
 }
 
+.logo {
+	font-weight: 300;
+	font-size: 40px;
+	color: #000;
+	text-decoration: none;
+}
+
 .main {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));

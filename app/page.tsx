@@ -1,8 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { PostCard } from '../components';
+import { PostCard } from './components';
 import styles from './page.module.css';
-import { LikeButton } from '../components';
 
 interface Post {
 	id: number;
@@ -28,15 +27,10 @@ export default function Home() {
 	}, []);
 
 	const postCards = posts
-		.slice(0, 3)
+		.slice(0, 5)
 		.map((post) => (
 			<PostCard key={post.id} title={post.title} body={post.body} />
 		));
 
-	return (
-		<main className={styles.main}>
-			{postCards}
-			<LikeButton />
-		</main>
-	);
+	return <main className={styles.main}>{postCards}</main>;
 }
