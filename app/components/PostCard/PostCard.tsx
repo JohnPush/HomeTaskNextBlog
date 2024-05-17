@@ -27,7 +27,7 @@ export const PostCard = ({
 			</div>
 			<div className={styles.bottom}>
 				<div className={styles.readingTime}>3 минуты</div>
-				<Link className={styles.link} href={'/post'}>
+				<Link className={styles.link} href={'/posts'}>
 					<button className={styles.button}>
 						Читать
 						<span className={styles.arrow}>
