@@ -15,7 +15,12 @@ export default async function Home() {
 	const postCards = post
 		.slice(0, 5)
 		.map((post) => (
-			<PostCard key={post.id} title={post.title} body={post.body} />
+			<PostCard
+				key={post.id}
+				id={post.id}
+				title={post.title}
+				body={post.body}
+			/>
 		));
 
 	return <main className={styles.main}>{postCards}</main>;

@@ -1,9 +1,15 @@
 'use client';
 import styles from './LikeButton.module.css';
-import { LikeButtonProps } from './LikeButton.props';
 import LikeIconBig from './LikeIconBig.svg';
 import cn from 'classnames';
 import { useState } from 'react';
+import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
+
+export interface LikeButtonProps
+	extends DetailedHTMLProps<
+		ButtonHTMLAttributes<HTMLButtonElement>,
+		HTMLButtonElement
+	> {}
 
 export const LikeButton = ({
 	className,

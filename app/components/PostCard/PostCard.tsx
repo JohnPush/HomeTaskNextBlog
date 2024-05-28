@@ -1,19 +1,21 @@
-import { PostCardProps } from './PostCard.props';
 import styles from './PostCard.module.css';
 import { LikeCount } from '../LikeCount/LikeCount';
+import { Button } from '../Button/Button';
 import Image from 'next/image';
-import Arrow from './Arrow.svg';
-import Link from 'next/link';
+import { ReactNode } from 'react';
 
-export const PostCard = ({
-	title,
-	body,
-	children
-}: PostCardProps): JSX.Element => {
+export interface PostCardProps {
+	id: number;
+	title: string;
+	body: string;
+	children?: ReactNode;
+}
+
+export const PostCard = ({ title, body, id }: PostCardProps): JSX.Element => {
 	return (
 		<div className={styles.postCard}>
 			<div className={styles.poster}>
-				<Image src="/Poster.svg" alt="poster" width={330} height={200}></Image>
+				<Image src="/Poster.svg" alt="poster" width={330} height={200} />
 			</div>
 			<div className={styles.description}>
 				<div className={styles.top}>
@@ -25,17 +27,7 @@ export const PostCard = ({
 				<div className={styles.title}>{title}</div>
 				<div className={styles.paragraph}>{body}</div>
 			</div>
-			<div className={styles.bottom}>
-				<div className={styles.readingTime}>3 минуты</div>
-				<Link className={styles.link} href={'/posts'}>
-					<button className={styles.button}>
-						Читать
-						<span className={styles.arrow}>
-							<Arrow />
-						</span>
-					</button>
-				</Link>
-			</div>
+			<Button postId={id} />
 		</div>
 	);
 };
