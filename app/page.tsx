@@ -1,17 +1,27 @@
-import Image from 'next/image';
-import { PostCard } from '../components';
+import { PostCard } from './components';
 import styles from './page.module.css';
-import { LikeButton } from '../components';
+import { Metadata } from 'next';
+import { getPosts } from '@/api/posts';
 
-export default function Home() {
-	const postCards = new Array(4)
-		.fill(<></>)
-		.map((_, index) => <PostCard key={index} />);
+export async function generateMetadata(): Promise<Metadata> {
+	return {
+		title: 'Home'
+	};
+}
 
-	return (
-		<main className={styles.main}>
-			{postCards}
-			<LikeButton />
-		</main>
-	);
+export default async function Home() {
+	const post = await getPosts();
+
+	const postCards = post
+		.slice(0, 5)
+		.map((post) => (
+			<PostCard
+				key={post.id}
+				id={post.id}
+				title={post.title}
+				body={post.body}
+			/>
+		));
+
+	return <main className={styles.main}>{postCards}</main>;
 }
