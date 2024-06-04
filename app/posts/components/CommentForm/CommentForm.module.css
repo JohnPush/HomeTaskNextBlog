@@ -1,0 +1,27 @@
+.commentForm {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.panel {
+	padding: 20px;
+	position: relative;
+	border-radius: 5px;
+	margin-top: 20px;
+}
+
+.error {
+	background: #fea291;
+}
+
+.close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+}
+
+.error .close path {
+	stroke: red;
+}

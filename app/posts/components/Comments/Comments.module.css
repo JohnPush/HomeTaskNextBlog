@@ -1,0 +1,29 @@
+.top {
+	display: flex;
+	gap: 6px;
+	margin-bottom: 7px;
+}
+
+.name {
+	font-size: 12px;
+	font-weight: 700;
+	color: #4b4b4b;
+}
+
+.dot {
+	font-size: 12px;
+	font-weight: 400;
+	color: #6e6e6e;
+}
+
+.email {
+	font-size: 12px;
+	font-weight: 400;
+	color: #6e6e6e;
+}
+
+.body {
+	font-size: 16px;
+	font-weight: 400;
+	color: #4b4b4b;
+}
