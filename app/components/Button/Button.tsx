@@ -14,16 +14,13 @@ export interface ButtonProps
 
 export const Button = ({ postId, ...props }: ButtonProps): JSX.Element => {
 	return (
-		<div className={styles.bottom}>
-			<div className={styles.readingTime}>3 минуты</div>
-			<Link className={styles.link} href={`/posts/${postId}`}>
-				<button className={styles.button}>
-					Читать
-					<span className={styles.arrow}>
-						<Arrow />
-					</span>
-				</button>
-			</Link>
-		</div>
+		<Link className={styles.link} href={`/posts/${postId}`}>
+			<button className={styles.button}>
+				Читать
+				<span className={styles.arrow}>
+					<Arrow />
+				</span>
+			</button>
+		</Link>
 	);
 };

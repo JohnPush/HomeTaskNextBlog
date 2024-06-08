@@ -47,25 +47,29 @@
 	color: #6e6e6e;
 }
 
+.likeCount {
+	margin-left: auto;
+}
+
 .title {
 	font-weight: 700;
 	font-size: 18px;
 	color: #2c2c2c;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .paragraph {
 	font-weight: 400;
 	font-size: 14px;
-	line-height: 150%;
 	color: #6e6e6e;
-}
-
-.paragraph a {
-	color: #6e6e6e;
-}
-
-.link {
-	text-decoration: none;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 4; /*Для старой версии Chrome*/
+	line-clamp: 4; /*Для новой версии Chrome*/
 }
 
 .bottom {
@@ -77,33 +81,4 @@
 	font-weight: 400;
 	font-size: 12px;
 	color: #6e6e6e;
-}
-
-.button {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	box-sizing: border-box;
-	padding: 0;
-	cursor: pointer;
-	border: none;
-	font-weight: 400;
-	font-size: 12px;
-	text-align: right;
-	color: #1473e6;
-	background: none;
-	transition: all 0.2s;
-}
-
-.arrow {
-	display: inline-block;
-	height: 20px;
-}
-
-.button:hover {
-	color: #014191;
-}
-
-.button:hover svg {
-	stroke: #014191;
 }
