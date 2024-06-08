@@ -1,6 +1,6 @@
 import styles from './Button.module.css';
 import cn from 'classnames';
-import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
+import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 
 export interface ButtonProps
 	extends DetailedHTMLProps<
@@ -10,7 +10,7 @@ export interface ButtonProps
 
 export const Button = ({ className, ...props }: ButtonProps): JSX.Element => {
 	return (
-		<button className={cn(styles.button, className, {})} {...props}>
+		<button className={cn(styles.button, className)} {...props}>
 			Отправить
 		</button>
 	);

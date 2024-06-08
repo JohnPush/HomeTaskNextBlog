@@ -52,7 +52,7 @@ export default function PostPage({ params }: PostPageProps) {
 			</div>
 			<div className={styles.poster}>
 				<Image
-					src="/Poster.svg"
+					src="/poster.svg"
 					alt="poster"
 					width={687}
 					height={440}
@@ -65,7 +65,7 @@ export default function PostPage({ params }: PostPageProps) {
 			/>
 			<div className={styles.like}>
 				<span>Понравилось? Жми</span>
-				<LikeButton />
+				<LikeButton postId={post.id} />
 			</div>
 			<h2 className={styles.h2}>Комментарии</h2>
 			<div className={styles.comments}>{commentElements}</div>

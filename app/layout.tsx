@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
 import './globals.css';
 import styles from './page.module.css';
-import Github from '../public/Github.svg';
+import Github from '../public/github.svg';
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
 

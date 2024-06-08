@@ -1,27 +1,30 @@
 'use client';
 import styles from './LikeButton.module.css';
-import LikeIconBig from './LikeIconBig.svg';
+import LikeIconBig from '../../../../public/likeIconBig.svg';
 import cn from 'classnames';
 import { useState } from 'react';
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
+import { API } from '@/app/api';
 
 export interface LikeButtonProps
 	extends DetailedHTMLProps<
 		ButtonHTMLAttributes<HTMLButtonElement>,
 		HTMLButtonElement
-	> {}
+	> {
+	postId: number;
+}
 
 export const LikeButton = ({
 	className,
+	postId,
 	...props
 }: LikeButtonProps): JSX.Element => {
 	const [isActive, setIsActive] = useState(false);
 
 	const handleClick = async () => {
 		try {
-			const response = await fetch(
-				'https://jsonplaceholder.typicode.com/posts/1'
-			);
+			const response = await fetch(API.comment + `${postId}`);
+
 			if (response.ok) {
 				setIsActive((prevState) => !prevState);
 			} else {

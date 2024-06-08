@@ -16,7 +16,7 @@ export const PostCard = ({ title, body, id }: PostCardProps): JSX.Element => {
 		<div className={styles.postCard}>
 			<div className={styles.poster}>
 				<Image
-					src="/Poster.svg"
+					src="/poster.svg"
 					alt="poster"
 					width={330}
 					height={200}

@@ -1,6 +1,6 @@
 'use client';
 import styles from './CommentForm.module.css';
-import CloseIcon from './close.svg';
+import CloseIcon from '../../../../public/close.svg';
 import cn from 'classnames';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 import { Button } from '../Button/Button';
@@ -9,15 +9,11 @@ import { Textarea } from '../Textarea/Textarea';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import axios from 'axios';
-
-export interface ICommentForm {
-	name: string;
-	description: string;
-}
-
-export interface ICommentSentResponse {
-	message: string;
-}
+import { API } from '@/app/api';
+import {
+	ICommentForm,
+	ICommentSentResponse
+} from '../../../../interfaces/commentForm.interface';
 
 export interface CommentFormProps
 	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
@@ -37,10 +33,9 @@ export const CommentForm = ({
 
 	const onSubmit = async (formData: ICommentForm) => {
 		try {
-			const { data } = await axios.post<ICommentSentResponse>(
-				`https://jsonplaceholder.typicode.com/comments`,
-				{ ...formData }
-			);
+			const { data } = await axios.post<ICommentSentResponse>(API.comments, {
+				...formData
+			});
 			if (data.message) {
 				setIsSuccess(true);
 				reset();
@@ -49,7 +44,7 @@ export const CommentForm = ({
 			}
 		} catch (e: unknown) {
 			if (e instanceof Error && e?.message) {
-				setError( e.message);
+				setError(e.message);
 			}
 		}
 	};

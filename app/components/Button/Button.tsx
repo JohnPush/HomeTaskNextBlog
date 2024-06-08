@@ -1,4 +1,4 @@
-import Arrow from './Arrow.svg';
+import Arrow from '../../../public/arrow.svg';
 import styles from './Button.module.css';
 import Link from 'next/link';
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';

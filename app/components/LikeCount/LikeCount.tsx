@@ -1,5 +1,5 @@
 import styles from './LikeCount.module.css';
-import LikeIconSmall from './LikeIconSmall.svg';
+import LikeIconSmall from '../../../public/likeIconSmall.svg';
 import cn from 'classnames';
 import { HTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
 
