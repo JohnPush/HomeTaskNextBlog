@@ -47,8 +47,10 @@ export const CommentForm = ({
 			} else {
 				setError('Что-то пошло не так');
 			}
-		} catch (e) {
-			setError(e.message);
+		} catch (e: unknown) {
+			if (e instanceof Error && e?.message) {
+				setError( e.message);
+			}
 		}
 	};
 
