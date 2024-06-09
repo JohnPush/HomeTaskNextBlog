@@ -1,8 +1,10 @@
+'use client';
 import styles from './PostCard.module.css';
 import { LikeCount } from '../LikeCount/LikeCount';
 import { Button } from '../Button/Button';
 import Image from 'next/image';
 import { ReactNode } from 'react';
+import { motion } from 'framer-motion';
 
 export interface PostCardProps {
 	id: number;
@@ -13,7 +15,12 @@ export interface PostCardProps {
 
 export const PostCard = ({ title, body, id }: PostCardProps): JSX.Element => {
 	return (
-		<div className={styles.postCard}>
+		<motion.div
+			initial={{ opacity: 0.5, x: 100, y: 100 }}
+			animate={{ opacity: 1, x: 0, y: 0 }}
+			transition={{ duration: 1 }}
+			className={styles.postCard}
+		>
 			<div className={styles.poster}>
 				<Image
 					src="/poster.svg"
@@ -39,6 +46,6 @@ export const PostCard = ({ title, body, id }: PostCardProps): JSX.Element => {
 				<div className={styles.readingTime}>3 минуты</div>
 				<Button postId={id} />
 			</div>
-		</div>
+		</motion.div>
 	);
 };

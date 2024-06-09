@@ -1,5 +1,6 @@
-import { Post, getPostById, getPosts } from '@/api/posts';
-import { Comment, getCommentsByPostId } from '@/api/comments';
+import { getPostById, getPosts } from '@/api/posts';
+import { Post } from '../../../interfaces/post.interface';
+import { getCommentsByPostId } from '@/api/comments';
 import styles from './page.module.css';
 import { notFound } from 'next/navigation';
 import { use } from 'react';
