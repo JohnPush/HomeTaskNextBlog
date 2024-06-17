@@ -16,7 +16,7 @@ import {
 } from '../../../../interfaces/commentForm.interface';
 
 export interface CommentFormProps
-	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+	extends DetailedHTMLProps<HTMLAttributes<HTMLFormElement>, HTMLFormElement> {}
 
 export const CommentForm = ({
 	className,
@@ -26,7 +26,8 @@ export const CommentForm = ({
 		register,
 		handleSubmit,
 		formState: { errors },
-		reset
+		reset,
+		clearErrors
 	} = useForm<ICommentForm>();
 	const [isSuccess, setIsSuccess] = useState<boolean>(false);
 	const [error, setError] = useState<string>();
@@ -50,14 +51,15 @@ export const CommentForm = ({
 	};
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
-			<div className={cn(styles.commentForm, className)} {...props}>
+		<form onSubmit={handleSubmit(onSubmit)} role="form" {...props}>
+			<div className={cn(styles.commentForm)}>
 				<Input
 					{...register('name', {
 						required: { value: true, message: 'Заполните имя' }
 					})}
 					placeholder="Имя"
 					error={errors.name}
+					aria-invalid={errors.name ? true : false}
 				/>
 
 				<Textarea
@@ -65,9 +67,11 @@ export const CommentForm = ({
 					{...register('description', {
 						required: { value: true, message: 'Напишите комментарий' }
 					})}
+					aria-label="Текст комментария"
 					error={errors.description}
+					aria-invalid={errors.description ? true : false}
 				/>
-				<Button />
+				<Button onClick={() => clearErrors()} />
 			</div>
 			{error && (
 				<div className={cn(styles.error, styles.panel)}>

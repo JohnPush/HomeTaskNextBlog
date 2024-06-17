@@ -5,17 +5,17 @@ import { HTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
 
 export interface LikeCountProps
 	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-	likeCount: number;
+	children?: ReactNode;
+	isReading: boolean;
 }
 
 export const LikeCount = ({
-	likeCount,
-	className,
+	isReading,
 	...props
 }: LikeCountProps): JSX.Element => {
 	return (
-		<div className={styles.likeCount} {...props}>
-			{likeCount}
+		<div tabIndex={isReading ? 0 : -1} className={styles.likeCount}>
+			<span className={styles.visualyHidden}>Количество лайков</span>4
 			<LikeIconSmall />
 		</div>
 	);

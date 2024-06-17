@@ -23,5 +23,5 @@ export default async function Home() {
 			/>
 		));
 
-	return <main className={styles.main}>{postCards}</main>;
+	return <div className={styles.main}>{postCards}</div>;
 }

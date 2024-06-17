@@ -1,0 +1,12 @@
+.postTopic {
+	font-weight: 400;
+	font-size: 12px;
+	color: #4b4b4b;
+}
+
+.visualyHidden {
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	position: absolute;
+}

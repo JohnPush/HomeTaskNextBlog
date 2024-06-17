@@ -8,6 +8,10 @@ import { LikeButton } from '../components/LikeButton/LikeButton';
 import { Comments } from '../components/Comments/Comments';
 import { CommentForm } from '../components/CommentForm/CommentForm';
 import { LikeCount } from '../../components/LikeCount/LikeCount';
+import { PostTopic } from '../../components/PostTopic/PostTopic';
+import { RelativeCreationDate } from '../../components/RelativeCreationDate/RelativeCreationDate';
+import { ReadingTime } from '../../components/ReadingTime/ReadingTime';
+
 import Image from 'next/image';
 
 interface PostPageProps {
@@ -37,19 +41,20 @@ export default function PostPage({ params }: PostPageProps) {
 	));
 
 	return (
-		<div className={styles.main}>
+		<main className={styles.main} role="main">
 			<h1
+				tabIndex={0}
 				className={styles.title}
 				dangerouslySetInnerHTML={{ __html: post.title }}
 			/>
 			<div className={styles.top}>
-				<div className={styles.postTopic}>Front-end</div>
+				<PostTopic isReading={true} />
 				<div className={styles.dot}>·</div>
-				<div className={styles.relativeCreationDate}>1 месяц назад</div>
+				<RelativeCreationDate isReading={true} />
 				<div className={styles.dot}>·</div>
-				<div className={styles.readingTime}>3 минуты</div>
+				<ReadingTime isReading={true} />
 				<div className={styles.dot}>·</div>
-				<LikeCount likeCount={4} />
+				<LikeCount isReading={true} />
 			</div>
 			<div className={styles.poster}>
 				<Image
@@ -61,6 +66,7 @@ export default function PostPage({ params }: PostPageProps) {
 				/>
 			</div>
 			<div
+				tabIndex={0}
 				className={styles.paragraph}
 				dangerouslySetInnerHTML={{ __html: post.body.replace(/\n/g, '<br>') }}
 			/>
@@ -68,19 +74,11 @@ export default function PostPage({ params }: PostPageProps) {
 				<span>Понравилось? Жми</span>
 				<LikeButton postId={post.id} />
 			</div>
-			<h2 className={styles.h2}>Комментарии</h2>
+			<h2 tabIndex={0} className={styles.h2}>
+				Комментарии
+			</h2>
 			<div className={styles.comments}>{commentElements}</div>
 			<CommentForm />
-		</div>
+		</main>
 	);
-}
-
-export async function generateStaticParams() {
-	const posts: Post[] = await getPosts();
-
-	const paths = posts.slice(0, 5).map((post) => ({
-		id: post.id.toString()
-	}));
-
-	return paths;
 }

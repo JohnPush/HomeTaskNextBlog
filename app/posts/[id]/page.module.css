@@ -67,3 +67,10 @@
 	align-items: center;
 	margin-bottom: 23px;
 }
+
+.visualyHidden {
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	position: absolute;
+}

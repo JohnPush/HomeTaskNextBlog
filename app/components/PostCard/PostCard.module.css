@@ -8,6 +8,11 @@
 	padding: 10px;
 	width: 350px;
 	background: #fff;
+	outline: none;
+}
+
+.postCard:focus {
+	box-shadow: 0 0 0 2px #1473e6;
 }
 
 .poster {
@@ -29,19 +34,7 @@
 	align-items: center;
 }
 
-.postTopic {
-	font-weight: 400;
-	font-size: 12px;
-	color: #4b4b4b;
-}
-
 .dot {
-	font-weight: 400;
-	font-size: 12px;
-	color: #6e6e6e;
-}
-
-.relativeCreationDate {
 	font-weight: 400;
 	font-size: 12px;
 	color: #6e6e6e;
@@ -75,10 +68,4 @@
 .bottom {
 	display: flex;
 	justify-content: space-between;
-}
-
-.readingTime {
-	font-weight: 400;
-	font-size: 12px;
-	color: #6e6e6e;
 }

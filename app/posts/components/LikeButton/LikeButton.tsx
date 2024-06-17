@@ -3,7 +3,7 @@ import styles from './LikeButton.module.css';
 import LikeIconBig from '../../../../public/likeIconBig.svg';
 import cn from 'classnames';
 import { useState } from 'react';
-import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
+import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { API } from '@/app/api';
 
 export interface LikeButtonProps
@@ -21,18 +21,8 @@ export const LikeButton = ({
 }: LikeButtonProps): JSX.Element => {
 	const [isActive, setIsActive] = useState(false);
 
-	const handleClick = async () => {
-		try {
-			const response = await fetch(API.comment + `${postId}`);
-
-			if (response.ok) {
-				setIsActive((prevState) => !prevState);
-			} else {
-				console.log('Ошибка при выполнении запроса');
-			}
-		} catch (error) {
-			console.error('Ошибка:', error);
-		}
+	const handleClick = () => {
+		setIsActive((prevState) => !prevState);
 	};
 
 	return (
@@ -41,6 +31,11 @@ export const LikeButton = ({
 				[styles.likeButtonActive]: isActive
 			})}
 			onClick={handleClick}
+			aria-label={
+				isActive
+					? 'Лайк поставлен. Нажмите чтобы снять лайк'
+					: 'Лайк не поставлен. Нажмите чтобы поставить лайк'
+			}
 			{...props}
 		>
 			<LikeIconBig />

@@ -2,7 +2,7 @@ import styles from './Input.module.css';
 import cn from 'classnames';
 import { ForwardedRef, forwardRef } from 'react';
 import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
-import {FieldError} from "react-hook-form";
+import { FieldError } from 'react-hook-form';
 
 export interface InputProps
 	extends DetailedHTMLProps<
@@ -18,7 +18,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		{ className, error, ...props }: InputProps,
 		ref: ForwardedRef<HTMLInputElement>
 	): JSX.Element => {
-
 		return (
 			<div className={cn(className, styles.inputWrapper)}>
 				<input
@@ -28,7 +27,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 					ref={ref}
 					{...props}
 				/>
-				{error && <span className={styles.errorMessage}>{error.message}</span>}
+				{error && (
+					<span role="alert" className={styles.errorMessage}>
+						{error.message}
+					</span>
+				)}
 			</div>
 		);
 	}
