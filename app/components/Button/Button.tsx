@@ -1,7 +1,13 @@
+'use client';
 import Arrow from '../../../public/arrow.svg';
 import styles from './Button.module.css';
-import Link from 'next/link';
-import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
+import { useRouter } from 'next/navigation';
+import {
+	ButtonHTMLAttributes,
+	DetailedHTMLProps,
+	ReactNode,
+	KeyboardEvent
+} from 'react';
 
 export interface ButtonProps
 	extends DetailedHTMLProps<
@@ -10,17 +16,40 @@ export interface ButtonProps
 	> {
 	children?: ReactNode;
 	postId: number;
+	title: string;
+	isReading: boolean;
 }
 
-export const Button = ({ postId, ...props }: ButtonProps): JSX.Element => {
+export const Button = ({
+	postId,
+	title,
+	isReading,
+	...props
+}: ButtonProps): JSX.Element => {
+	const router = useRouter();
+
+	const openPost = (key: KeyboardEvent<HTMLButtonElement>) => {
+		if (key.code == 'Space' || key.code == 'Enter') {
+			key.preventDefault();
+			router.push(`/posts/${postId}`);
+		}
+	};
+
+	const handleClick = () => {
+		router.push(`/posts/${postId}`);
+	};
+
 	return (
-		<Link className={styles.link} href={`/posts/${postId}`}>
-			<button className={styles.button}>
-				Читать
-				<span className={styles.arrow}>
-					<Arrow />
-				</span>
-			</button>
-		</Link>
+		<button
+			className={styles.button}
+			tabIndex={isReading ? 0 : -1}
+			onClick={handleClick}
+			onKeyDown={openPost}
+			aria-label={`Читать пост ${title}`}
+			{...props}
+		>
+			Читать
+			<Arrow />
+		</button>
 	);
 };
